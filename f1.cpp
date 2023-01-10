@@ -5,35 +5,55 @@
 
 #define kDestinationString 30
 #define kDateSting 10
+#define kInfo 10
 #pragma warning(disable:4996)
 #define _CRT_SECURE_NO_WARNINGS
 
-struct FlightInfo {
+typedef struct {
 	char* destination;
 	char* date;
-};
+}FlightInfo;
 
 //void fillFlightInfo(char* des, char* dat);
 int main() {
 	
 	char destinationString[kDestinationString] = "";
 	char dateString[kDateSting] = "";
-	struct FlightInfo flightInformation[10] = { {destinationString, dateString} };
-	int i = 0, count = 2;
+	int i = 0, count = 3;
+	FlightInfo flightInformation[kInfo] = {  };
+	char *pFlightInfo[kInfo] = { NULL };
+	
+	
 
-	for (i; i < count; i++) {
+	
 
-		//fgets(flightInformation->destination, sizeof flightInformation->destination, stdin);
-		//fgets(dateString, sizeof dateString, stdin);
+
+	for (i=0; i < count; i++) {
+		//char destinationString[kDestinationString] = "";
+		//fgets(flightInformation[i].destination, sizeof flightInformation[i].destination, stdin);
 		fgets(destinationString, sizeof destinationString, stdin);
+		//fgets(dateString, sizeof dateString, stdin);
+		//fgets(dateString, sizeof dateString, stdin);
+	
 		int maxInputDestination = strlen(destinationString);
-		strcpy(flightInformation[i].destination, destinationString);
+		pFlightInfo[i] = (char*)malloc(maxInputDestination + 1);
+		//strcpy(flightInformation[i].destination, destinationString);
+		printf("%s  \n", *pFlightInfo);
+		flightInformation[i].destination = destinationString;
+		pFlightInfo[i] = flightInformation[i].destination;
+		//flightInformation[i].date = dateString;
 		
+		//printf("%s  \n", pFlightInfo);
+		
+		//printf("%s  \n", flightInformation[0].destination);
+	
 	}
 	
+
 	
 	for (i = 0; i < count; i++) {
-		printf("%s", flightInformation[i].destination);
+		printf("%s  \n", pFlightInfo[i]);
+		//printf("%s  \n", destinationString);
 	}
 
 	/*
